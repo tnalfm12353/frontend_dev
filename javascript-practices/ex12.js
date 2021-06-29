@@ -35,6 +35,6 @@ var f = function( param ) {
     console.log(this + " : " + param);
 }
 
-o = { name: "dogy!"};
-f.call(o, "화성 갈끄니까");
+o = { name: "ㅎㅇㅇㅎ"};
+f.call(o, "ㅎㅇㅎㅇ");
 f.apply(o);
