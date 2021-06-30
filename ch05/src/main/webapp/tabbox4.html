@@ -43,7 +43,7 @@ body		{ font-family: '맑은 고딕' 돋움; font-size:0.75rem; color:#333 }
 	text-align: center;
 }
 
-.flex-tab-box li.selected {
+.tab-box li.selected,.flex-tab-box li.selected {
 	background-color: #ffca08;
 }
 
@@ -57,8 +57,9 @@ body		{ font-family: '맑은 고딕' 돋움; font-size:0.75rem; color:#333 }
 
 </style>
 <script type="text/javascript" src="jquery-1.9.0.js"></script>
-
-<script type="text/javascript">
+<script src="/ch05/tabbox.js" type="text/javascript"></script>
+<link src ="/ch05/tabbox.css" rel="stylesheet" type="text/css"/>
+<!-- <script type="text/javascript">
 	// DOM LEVEL 2 Event 처리: jquery
 	// 2) jquery (DOM API)
 	
@@ -68,30 +69,33 @@ $(() =>{
 		$(this).addClass("selected");
 	});
 });
+</script> -->
+
+<script>
+		tabBox.init();
 </script>
 </head>
 <body>
-<div class="tab-box">
-	<ul>
-        <li onclick="onTabClicked(this)">메뉴 1</li>
-        <li onclick="onTabClicked(this)">메뉴 2</li>
-        <li onclick="onTabClicked(this)">메뉴 3</li>
-        <li onclick="onTabClicked(this)">메뉴 4</li>
-        <li onclick="onTabClicked(this)">메뉴 5</li>
-    </ul>
-    <div>
-    	탭뷰입니다.
-    </div>
-</div>
-
-<div class="flex-tab-box">
-	<ul>
-        <li>메뉴 1</li>
-        <li>메뉴 2</li>
-        <li>메뉴 3</li>
-        <li>메뉴 4</li>
-        <li>메뉴 5</li>
-    </ul>
+	<div class="tab-box">
+		<ul>
+			<li>메뉴 1</li>
+			<li>메뉴 2</li>
+			<li>메뉴 3</li>
+			<li>메뉴 4</li>
+			<li>메뉴 5</li>
+		</ul>
+		<div>
+			탭뷰입니다.
+		</div>
+	</div>  
+	<div class="tab-box">
+		<ul>
+    	    <li>메뉴 1</li>
+    	    <li>메뉴 2</li>
+    	    <li>메뉴 3</li>
+    	    <li>메뉴 4</li>
+    	    <li>메뉴 5</li>
+    	</ul>
     <div>
     	탭뷰입니다.
     </div>
