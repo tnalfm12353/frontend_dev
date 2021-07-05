@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="./jquery/jquery-simple.js"></script>
+<script type="text/javascript" src="jquery/jquery-3.6.0.js"></script>
 <script>
 
 $(function() {
@@ -14,17 +14,17 @@ $(function() {
 	console.log($obj[0]); // jQuery Object가 아니다. HTMLElement이다.
 	console.log($obj.get(0)); // jQuery Object가 아니다. HTMLElement이다.
 	
-	$obj.css("color","red");
-	$obj.click(function() {
-		// 이벤트 핸들러에서 this는 jquery obj가 아닌 HTMLElement이다.
-		console.log("clicked : " + this);
+	$obj.css('color', 'red');
+	$obj.click(function(){
+		// 이벤트 핸들러에서 this는 jQuery Object가 아닌 HTMLElement이다.
+		console.log("clicked:" + this);
 		
 		// var $obj = $(this);
 		// $obj.css("text-decoration", "underline");
 		// $obj.text("클릭!");
 		
-		// jQuery Object의 거의 모든 메소드(예외 traverse)는 
-		// 호출한 jQuery Object를 다시 반환한다.
+		// jQuery Object의 거의 모든 메서드(예외 traverse)는
+		// 호출한 jQeury Object를 다시 반환한다. 
 		// method chain이 가능하다.
 		$(this)
 			.css("text-decoration", "underline")

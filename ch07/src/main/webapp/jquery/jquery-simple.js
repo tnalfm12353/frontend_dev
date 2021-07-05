@@ -9,8 +9,6 @@ var jQuery = function(param) {
 		var elements = document.querySelectorAll(param);
 		return new _jQuery(elements);
 	}
-	
-	return new _jQuery(elements);
 }
 
 var _jQuery = function(elements) {
