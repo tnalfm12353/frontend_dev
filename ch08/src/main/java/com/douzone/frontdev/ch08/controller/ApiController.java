@@ -1,6 +1,8 @@
 package com.douzone.frontdev.ch08.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -43,6 +45,22 @@ public class ApiController {
 		vo.setName("둘리");
 		vo.setMessage("gdgd");
 		
+		return JsonResult.success(vo);
+	}
+	
+	@ResponseBody
+	@PostMapping("/post01")
+	public Object post01(GuestbookVo vo) {
+		vo.setId(10L);
+		vo.setPassword("");
+		return JsonResult.success(vo);
+	}
+	
+	@ResponseBody
+	@PostMapping("/post02")
+	public Object post02(@RequestBody GuestbookVo vo) {
+		vo.setId(10L);
+		vo.setPassword("");
 		return JsonResult.success(vo);
 	}
 }
