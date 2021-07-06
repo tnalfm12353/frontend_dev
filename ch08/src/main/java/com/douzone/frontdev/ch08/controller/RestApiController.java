@@ -1,6 +1,7 @@
 package com.douzone.frontdev.ch08.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,8 +30,27 @@ public class RestApiController {
 	
 	@GetMapping("")
 	public JsonResult read() {
-		List<UserVo> vo = new ArrayList<UserVo>();
-		return JsonResult.success(vo);
+		List<UserVo> list = new ArrayList<>();
+		UserVo vo = new UserVo();
+		vo.setId(1l);
+		vo.setName("피치");
+		vo.setEmail("peachong@naver.com");
+		vo.setGender("female");
+		list.add(vo);
+		
+		vo.setId(1l);
+		vo.setName("피치");
+		vo.setEmail("peachong@naver.com");
+		vo.setGender("female");
+		list.add(vo);
+		
+		vo.setId(1l);
+		vo.setName("피치");
+		vo.setEmail("peachong@naver.com");
+		vo.setGender("female");
+		list.add(vo);
+		
+		return JsonResult.success(list);
 	}
 	
 	@GetMapping("/{no}")

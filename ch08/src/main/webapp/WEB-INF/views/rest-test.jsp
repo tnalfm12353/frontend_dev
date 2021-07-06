@@ -30,6 +30,16 @@ $(function(){
 		});
 	});
 	
+	$("#list").click(function(){
+		$.ajax({
+			url: "${pageContext.request.contextPath}/api/user/",
+			type: "get",
+			success: function(response) {
+				console.log(response);
+			}
+		});
+	});
+	
 	$("#read").click(function(){
 		$.ajax({
 			url: "${pageContext.request.contextPath}/api/user/10",
@@ -78,6 +88,9 @@ $(function(){
 </head>
 <body>
 	<h1>AJAX Test - Restful API</h1>
+	<button id="list">List(get)</button>
+	<br/>
+	<br/>
 	<button id="create">Create(post)</button>
 	<br/>
 	<br/>
