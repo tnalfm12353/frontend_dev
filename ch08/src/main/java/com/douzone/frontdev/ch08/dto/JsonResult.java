@@ -6,17 +6,12 @@ public class JsonResult {
 	private String result;	/* "success" or "fail" */
 	private Object data;	/* if success, Data Set */
 	private String message;	/* if fail, message set */
-	private List<Object> dataList;
 	
 	
 	private JsonResult() {}
 	private JsonResult(Object data) {
 		result = "success";
 		this.data = data;
-	}
-	private JsonResult(List<Object> dataList) {
-		result = "success";
-		this.dataList = dataList;
 	}
 	
 	private JsonResult(String message) {
@@ -32,16 +27,8 @@ public class JsonResult {
 		return data;
 	}
 	
-	public List<Object> getDataList(){
-		return dataList;
-	}
-	
 	public String getMessage() {
 		return message;
-	}
-
-	public static JsonResult success(List<Object> dataList) {
-		return new JsonResult(dataList);
 	}
 	
 	public static JsonResult success(Object data) {
