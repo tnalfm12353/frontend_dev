@@ -11,7 +11,13 @@
 <script src="${pageContext.request.contextPath}/jquery/jquery-3.6.0.js " type="text/javascript"></script>
 <script type="text/javascript">
 	var render = function(vo){
+		html = 
+			"<li data-no='" + vo.id +"'>"+
+			"<strong>" + vo.name + "</strong>" + 
+			"<p>" + vo.message + "</p>" +
+			"<strong></strong> <a href='' data-no='"+ vo.id +"'>삭제</a></li>"
 		
+		$("#list-guestbook").append(html);
 	}
 	const fetch = () => {
 			$.ajax({
@@ -19,19 +25,17 @@
 				dataType: "json",  	// 받을 때 포맷
 				type: "get",		// 요청 method
 				success: function(response) {
-					response.data.forEach((vo)=>{
-						console.log(vo);
-						html = 
-							"<li data-no='" + vo.id +"'>"+
-							"<strong>" + vo.name + "</strong>" + 
-							"<p>" + vo.message + "</p>" +
-							"<strong></strong> <a href='' data-no='"+ vo.id +"'>삭제</a></li>"
-						$("#list-guestbook").append(html);
-					})
+					response.data.forEach(render)
+					
+					var html = listEJS.render(response.data);
+					$("#list-guestbook").append(html);
 				}
 			})
 			
 		};
+	var listEJS = new EJS({
+		url: "${pageContext.request.contextPath}/ejs/list-template.ejs"
+	});
 	// 최초 데이터 가져오기
 	$(()=>{
 		$("#btn-fetch").click(()=>{

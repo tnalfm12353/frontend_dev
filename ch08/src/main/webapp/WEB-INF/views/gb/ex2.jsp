@@ -11,21 +11,30 @@
 <script src="${pageContext.request.contextPath}/jquery/jquery-3.6.0.js " type="text/javascript"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/ejs/ejs.js " type="text/javascript"></script>
 <script type="text/javascript">
+var render = function(vo, mode){
+	html = 
+		"<li data-no='" + vo.id +"'>"+
+		"<strong>" + vo.name + "</strong>" + 
+		"<p>" + vo.message + "</p>" +
+		"<strong></strong> <a href='' data-no='"+ vo.id +"'>삭제</a></li>"
+	
+		$("#list-guestbook")[mode ? "append" : "prepend"](html);
+}
+
+var listItemEJS = new EJS({
+	url: "${pageContext.request.contextPath}/ejs/listitem-template.ejs"
+});
+
 	const fetch = () => {
 			$.ajax({
 				url: "${pageContext.request.contextPath}/guestbook/api/list",
 				dataType: "json",  	// 받을 때 포맷
 				type: "get",		// 요청 method
 				success: function(response) {
-					response.data.forEach((vo)=>{
-						console.log(vo);
-						html = 
-							"<li data-no='" + vo.id +"'>"+
-							"<strong>" + vo.name + "</strong>" + 
-							"<p>" + vo.message + "</p>" +
-							"<strong></strong> <a href='' data-no='"+ vo.id +"'>삭제</a></li>"
-						$("#list-guestbook").append(html);
+					response.data.forEach((e)=>{
+						render(e);
 					})
 				}
 			})
@@ -66,19 +75,10 @@
 				contentType: "application/json",
 				data: JSON.stringify(vo),
 				success: function(response) {
-					console.log(response);
-					
 					var vo = response.data;
-					
-					html =
-						"<li data-no='" + vo.no + "'>" + 
-							"<strong>" + vo.name + "</strong>" +
-							"<p>" + vo.message + "</p>" +
-							"<strong></strong>" + 
-							"<a href='' data-no='" + vo.no + "'>삭제</a>" + 
-						"</li>";
-						
-					$("#list-guestbook").prepend(html);	
+					// render(vo, false);
+					const html = listItemEJS.render(vo);
+					$("#list-guestbook").prepend(html);
 				}
 			});
 		});
